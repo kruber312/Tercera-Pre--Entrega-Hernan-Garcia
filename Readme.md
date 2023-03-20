@@ -14,6 +14,10 @@ Tambien se puede acceder a la pagina de Admin. Donde hay un formulario para ingr
 
 Se puede acceder tambien al administrador de Django en http://127.0.0.1:8000/admin con el usuario admin/admin. Donde ya estan registrados los Modelos.
 
+## HTML
+
+Todas los html son heredados de inicio.html
+
 ## Notas de Hernan
 
 - Originalmente, pense que habia que hacer 3 modelos, y sus paginas para añadir y buscarlos. Pero luego releyendo el ejercicio me di cuenta que pide un solo formulario para añadir datos a los 3 modelos. Por lo que cree la pagina de "Admin" que hace esto mismo.
