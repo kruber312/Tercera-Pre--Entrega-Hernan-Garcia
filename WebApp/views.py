@@ -3,10 +3,11 @@ from WebApp.models import Estudiante, Profesor, Curso
 from WebApp.forms import *
 
 def inicio(request):
-
+    #Cargamos pagina de inicio
     return render(request, "WebApp/inicio.html")
 
 def estudiantes(request):
+    #Cargamos las forms y la enviamos al HTML
     context = {
         "form": EstudianteForm(),
         "form_buscar": BuscarEstudianteForm(),
@@ -14,6 +15,7 @@ def estudiantes(request):
     return render(request, "WebApp/estudiantes.html", context=context)
 
 def crear_estudiante(request):
+    #Definimos como Crear Estudiantes, tomamos los datos del form y los cargamos en la clase modelo usando metodo POST
     if request.method == "POST":
         mi_formulario = EstudianteForm(request.POST)
         if mi_formulario.is_valid():
@@ -28,6 +30,7 @@ def crear_estudiante(request):
     return render(request, "WebApp/estudiantes.html")
 
 def buscar_estudiante(request):
+    # Formulario Buscar, devolvemos los datos encontrados
     mi_formulario = BuscarEstudianteForm(request.GET)
     if mi_formulario.is_valid():
         informacion = mi_formulario.cleaned_data
@@ -38,6 +41,7 @@ def buscar_estudiante(request):
     return render(request, "WebApp/buscar_estudiante.html", context=context)
 
 def profesores(request):
+    # Cargamos las forms y la enviamos al HTML
     context = {
         "form": ProfesorForm(),
         "form_buscar": BuscarProfesorForm(),
@@ -45,6 +49,7 @@ def profesores(request):
     return render(request, "WebApp/profesores.html", context=context)
 
 def crear_profesor(request):
+    # Definimos como Crear Profesores, tomamos los datos del form y los cargamos en la clase modelo
     if request.method == "POST":
         mi_formulario = ProfesorForm(request.POST)
         if mi_formulario.is_valid():
@@ -59,6 +64,7 @@ def crear_profesor(request):
     return render(request, "WebApp/profesores.html")
 
 def buscar_profesor(request):
+    # Formulario Buscar, devolvemos los datos encontrados
     mi_formulario = BuscarProfesorForm(request.GET)
     if mi_formulario.is_valid():
         informacion = mi_formulario.cleaned_data
@@ -69,6 +75,7 @@ def buscar_profesor(request):
     return render(request, "WebApp/buscar_profesor.html", context=context)
 
 def cursos(request):
+    # Cargamos las forms y la enviamos al HTML
     context = {
         "form": CursoForm(),
         "form_buscar": BuscarCursoForm(),
@@ -76,6 +83,7 @@ def cursos(request):
     return render(request, "WebApp/cursos.html", context=context)
 
 def crear_curso(request):
+    # Definimos como Crear Cursos, tomamos los datos del form y los cargamos en la clase modelo
     if request.method == "POST":
         mi_formulario = CursoForm(request.POST)
         if mi_formulario.is_valid():
@@ -89,6 +97,7 @@ def crear_curso(request):
     return render(request, "WebApp/cursos.html")
 
 def buscar_curso(request):
+    # Formulario Buscar, devolvemos los datos encontrados
     mi_formulario = BuscarCursoForm(request.GET)
     if mi_formulario.is_valid():
         informacion = mi_formulario.cleaned_data
@@ -99,6 +108,7 @@ def buscar_curso(request):
     return render(request, "WebApp/buscar_curso.html", context=context)
 
 def admin(request):
+    # Cargamos las forms y todos los Estudiantes, Profesores y Cursos y lo enviamos al HTML
     all_estudiantes = Estudiante.objects.all()
     all_profesores = Profesor.objects.all()
     all_cursos = Curso.objects.all()
@@ -110,6 +120,7 @@ def admin(request):
     }
     return render(request, "WebApp/administracion.html", context=context)
 def add_admin(request):
+    #Añadimos desde un formulario a todas las clases. En este caso no usamos una variable intermedia y cargamos directo a las clases
     if request.method == "POST":
         mi_formulario = AdminForm(request.POST)
         if mi_formulario.is_valid():
