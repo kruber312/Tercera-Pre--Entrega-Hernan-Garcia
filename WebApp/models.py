@@ -17,7 +17,7 @@ class Profesor(models.Model):
     cursos = models.CharField(max_length=40)
 
     def __str__(self):
-        return f'Profesor: {self.nombre} {self.apellido}, Cursos: {self.camada}'
+        return f'Profesor: {self.nombre} {self.apellido}, Cursos: {self.cursos}'
 
 class Curso(models.Model):
     # Clase Curso, con nombre y Camada

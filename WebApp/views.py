@@ -99,8 +99,14 @@ def buscar_curso(request):
     return render(request, "WebApp/buscar_curso.html", context=context)
 
 def admin(request):
+    all_estudiantes = Estudiante.objects.all()
+    all_profesores = Profesor.objects.all()
+    all_cursos = Curso.objects.all()
     context = {
         "form": AdminForm(),
+        "estudiantes": all_estudiantes,
+        "profesores": all_profesores,
+        "cursos": all_cursos
     }
     return render(request, "WebApp/administracion.html", context=context)
 def add_admin(request):
