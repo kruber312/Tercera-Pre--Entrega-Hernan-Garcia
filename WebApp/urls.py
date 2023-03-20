@@ -12,4 +12,6 @@ urlpatterns = [
     path('cursos/', views.cursos, name="WebAppCursos"),
     path('cursos/crear', views.crear_curso, name="WebAppCrearCurso"),
     path('cursos/buscar', views.buscar_curso, name="WebAppBuscarCurso"),
+    path('administracion', views.admin, name="WebAppAdmin"),
+    path('administracion/add', views.add_admin, name="WebAppAdminAdd"),
 ]

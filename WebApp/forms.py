@@ -22,3 +22,11 @@ class CursoForm(forms.Form):
 
 class BuscarCursoForm(forms.Form):
     nombre = forms.CharField(max_length=40)
+
+class AdminForm(forms.Form):
+    nombre_estudiante = forms.CharField(max_length=40)
+    apellido_estudiante = forms.CharField(max_length=40)
+    nombre_profesor = forms.CharField(max_length=40)
+    apellido_profesor = forms.CharField(max_length=40)
+    curso = forms.CharField(max_length=40)
+    camada = forms.IntegerField()

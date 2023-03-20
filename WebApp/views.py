@@ -98,3 +98,31 @@ def buscar_curso(request):
             }
     return render(request, "WebApp/buscar_curso.html", context=context)
 
+def admin(request):
+    context = {
+        "form": AdminForm(),
+    }
+    return render(request, "WebApp/administracion.html", context=context)
+def add_admin(request):
+    if request.method == "POST":
+        mi_formulario = AdminForm(request.POST)
+        if mi_formulario.is_valid():
+            info = mi_formulario.cleaned_data
+            Curso(
+                nombre=info["curso"],
+                camada=info["camada"]
+            ).save()
+            Estudiante(
+                nombre=info["nombre_estudiante"],
+                apellido=info["apellido_estudiante"],
+                camada=info["camada"]
+            ).save()
+            Profesor(
+                nombre=info["nombre_profesor"],
+                apellido=info["apellido_profesor"],
+                cursos=info["curso"]
+            ).save()
+
+            return redirect("WebAppAdmin")
+
+    return render(request, "WebApp/administracion.html")

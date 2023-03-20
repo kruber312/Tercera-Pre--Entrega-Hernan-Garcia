@@ -1,0 +1,12 @@
+{%  extends "WebApp/inicio.html" %}
+
+    {% block contenido_cambia %}
+       <h1>Pagina de Administracion</h1>
+        <h2>Ingreso Masivo</h2>
+        <form action="{% url "WebAppAdminAdd" %}" method="post">
+            {%  csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Añadir Curso">
+        </form>
+
+    {%  endblock %}
