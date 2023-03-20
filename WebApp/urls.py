@@ -10,6 +10,6 @@ urlpatterns = [
     path('profesores/crear', views.crear_profesor, name="WebAppCrearProfesor"),
     path('profesores/buscar', views.buscar_profesor, name="WebAppBuscarProfesor"),
     path('cursos/', views.cursos, name="WebAppCursos"),
-    #path('cursos/crear', views.crear_curso, name="WebAppCrearCurso"),
-    #path('cursos/buscar', views.buscar_curso, name="WebAppBuscarCurso"),
+    path('cursos/crear', views.crear_curso, name="WebAppCrearCurso"),
+    path('cursos/buscar', views.buscar_curso, name="WebAppBuscarCurso"),
 ]

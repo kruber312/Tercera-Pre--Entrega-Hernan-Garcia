@@ -69,6 +69,32 @@ def buscar_profesor(request):
     return render(request, "WebApp/buscar_profesor.html", context=context)
 
 def cursos(request):
+    context = {
+        "form": CursoForm(),
+        "form_buscar": BuscarCursoForm(),
+    }
+    return render(request, "WebApp/cursos.html", context=context)
 
+def crear_curso(request):
+    if request.method == "POST":
+        mi_formulario = CursoForm(request.POST)
+        if mi_formulario.is_valid():
+            info = mi_formulario.cleaned_data
+            curso_save = Curso(
+                nombre=info["nombre"],
+                camada=info["camada"],
+            )
+            curso_save.save()
+            return redirect("WebAppCursos")
     return render(request, "WebApp/cursos.html")
+
+def buscar_curso(request):
+    mi_formulario = BuscarCursoForm(request.GET)
+    if mi_formulario.is_valid():
+        informacion = mi_formulario.cleaned_data
+        cursos_filtrados = Curso.objects.filter(nombre__icontains=informacion["nombre"])
+        context = {
+            "cursos": cursos_filtrados
+            }
+    return render(request, "WebApp/buscar_curso.html", context=context)
 
