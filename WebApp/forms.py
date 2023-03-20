@@ -11,7 +11,7 @@ class BuscarEstudianteForm(forms.Form):
 class ProfesorForm(forms.Form):
     nombre = forms.CharField(max_length=40)
     apellido = forms.CharField(max_length=40)
-    curso = forms.IntegerField()
+    curso = forms.CharField(max_length=40)
 
 class BuscarProfesorForm(forms.Form):
     nombre = forms.CharField(max_length=40)

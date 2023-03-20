@@ -14,7 +14,7 @@ class Profesor(models.Model):
     # Clase de Profesor, Nombre y Apellido y Curso que Ensenia
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
-    cursos = models.IntegerField()
+    cursos = models.CharField(max_length=40)
 
     def __str__(self):
         return f'Profesor: {self.nombre} {self.apellido}, Cursos: {self.camada}'
